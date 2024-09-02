@@ -101,6 +101,7 @@ RUN source /assets/functions/00-container && \
         && \
     \
     ### Download Discourse
+    git config --global safe.directory '/app'
     clone_git_repo "https://github.com/discourse/discourse" "${DISCOURSE_VERSION}" /app && \
     BUNDLER_VERSION="$(grep "BUNDLED WITH" Gemfile.lock -A 1 | grep -v "BUNDLED WITH" | tr -d "[:space:]")" && \
     gem install bundler:"${BUNDLER_VERSION}" && \
